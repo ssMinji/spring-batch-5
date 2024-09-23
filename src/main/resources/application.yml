@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    batch:
+      hikari:
+        jdbc-url: jdbc:postgresql://localhost:5432/member
+        username: postgres
+        password: pass
+        driver-class-name: org.postgresql.Driver
+  batch:
+    job:
+      name: ${job.name:NONE}
+    jdbc:
+      initialize-schema: always
+mybatis:
+  type-aliases-package: com.ezwel.esp.batch.common.domain
+  mapper-locations: classpath:mappers/**/**/**.xml
