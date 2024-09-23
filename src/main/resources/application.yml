@@ -1,0 +1,36 @@
+spring:
+  profiles:
+    active: local
+
+---
+#spring:
+#  config:
+#    activate:
+#      on-profile: local
+#  datasource:
+#    hikari:
+#      jdbc-url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#      username: sa
+#      password:
+#      driver-class-name: org.h2.Driver
+#  batch:
+#    jdbc:
+#      initialize-schema: embedded
+#      table-prefix: BATCH_
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/member
+    username: postgres
+    password: pass
+    driver-class-name: org.postgresql.Driver
+  batch:
+    jdbc:
+      initialize-schema: always
+mybatis:
+  type-aliases-package: com.ezwel.esp.batch.common.domain
+  mapper-locations: classpath:mappers/*.xml
