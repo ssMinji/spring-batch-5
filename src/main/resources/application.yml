@@ -20,6 +20,6 @@ spring:
     jdbc:
       initialize-schema: never
 mybatis:
-  type-aliases-package: com.ezwel.esp.batch.common.domain
+  type-aliases-package: com.ezwel.esp.batch
   mapper-locations: classpath:mappers/**/**/**.xml
 

@@ -16,20 +16,20 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 @RequiredArgsConstructor
 public class SampleTest1JobConfig {
-    private final CommonJobListener jobListener;
+    private final CommonJobListener commonJobListener;
     private final SampleTest1Tasklet sampleTest1Tasklet;
     private final SampleTest2Tasklet sampleTest2Tasklet;
 
-    @Bean
+    @Bean("sampleTest1Job")
     public Job sampleTest1Job(JobRepository jobRepository, Step sampleTest1Step, Step sampleTest2Step) {
         return new JobBuilder("sampleTest1Job", jobRepository)
-                .listener(jobListener)
+                .listener(commonJobListener)
                 .start(sampleTest1Step)
                 .next(sampleTest2Step)
                 .build();
     }
 
-    @Bean
+    @Bean("sampleTest1Step")
     public Step sampleTest1Step(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
         return new StepBuilder("sampleTest1Step", jobRepository)
                 .allowStartIfComplete(true)

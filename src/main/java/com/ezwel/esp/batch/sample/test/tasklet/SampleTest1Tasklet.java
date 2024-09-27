@@ -18,7 +18,7 @@ public class SampleTest1Tasklet implements Tasklet {
         int userId = userMapper.selectMaxId();
         System.out.println("================================Max User ID: " + userId + "=============");
 
-        userMapper.insertUserName(userId+1, "test");
+        userMapper.insertUser(userId+1, "test");
         System.out.println("================================Insert     : " + userId+1 + ": " + "test============");
         return RepeatStatus.FINISHED;
     }

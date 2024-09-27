@@ -15,5 +15,5 @@ public interface UserMapper {
 
     void updateUserName(@Param("id") int id, @Param("name") String name);
 
-    void insertUserName(@Param("id") int id, @Param("name") String name);
+    void insertUser(@Param("id") int id, @Param("name") String name);
 }
