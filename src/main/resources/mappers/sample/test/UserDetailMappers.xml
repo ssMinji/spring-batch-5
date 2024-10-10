@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezwel.esp.batch.sample.test.mapper.UserDetailMapper">
+    <select id="selectUserDetailById" resultType="com.ezwel.esp.batch.sample.test.domain.UserDetail">
+        SELECT *
+        FROM user_detail
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateEndDate">
+        UPDATE user_detail SET end_date = #{endDate} WHERE emp_id = #{empId}
+    </update>
+
+    <update id="updateActiveStatus">
+        UPDATE user_detail SET active = #{activeStatus} WHERE emp_id = #{empId}
+    </update>
+</mapper>

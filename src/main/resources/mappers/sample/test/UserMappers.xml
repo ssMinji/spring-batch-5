@@ -30,4 +30,15 @@
         INSERT INTO users(id, name)
         VALUES (#{id}, #{name})
     </insert>
+
+    <select id="selectUserByStatus" resultType="com.ezwel.esp.batch.sample.test.domain.User">
+        SELECT *
+        FROM users
+        WHERE status = #{status}
+        LIMIT #{_pagesize} OFFSET #{_skiprows}
+    </select>
+
+    <update id="updateUserStatus">
+        UPDATE users SET status = #{status} WHERE id = #{id}
+    </update>
 </mapper>

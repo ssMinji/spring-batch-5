@@ -17,7 +17,7 @@ public class ChunkSampleItemReader extends MyBatisPagingItemReader<User> {
     public ChunkSampleItemReader(SqlSessionFactory sqlSessionFactory, @Value("#{jobParameters['userName']}") String userName) {
         this.setName("SampleItemReader"); // reader명
         this.setSqlSessionFactory(sqlSessionFactory);
-        this.setQueryId("selectUserByUserName");
+        this.setQueryId("com.ezwel.esp.batch.sample.test.mapper.UserMapper.selectUserByUserName");
         this.setParameterValues(Map.of("name", userName));
         this.setPageSize(PAGE_SIZE);
     }

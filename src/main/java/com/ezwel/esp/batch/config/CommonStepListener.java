@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class CommonStepListener implements StepExecutionListener {
     @Override
     public void beforeStep(StepExecution stepExecution) {
-        String param1 = stepExecution.getJobParameters().getString("userName");
+        String param1 = stepExecution.getJobParameters().getString("status");
         String param2 = stepExecution.getJobParameters().getString("param2");
         System.out.println("==========================Parameter Check: param1: " + param1 + ", param2: " + param2);
     }
