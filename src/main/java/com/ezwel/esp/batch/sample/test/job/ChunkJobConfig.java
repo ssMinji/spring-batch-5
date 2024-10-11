@@ -22,18 +22,18 @@ public class ChunkJobConfig {
     private final CommonJobListener commonJobListener;
     private final int CHUNK_SIZE = 1000;
 
-    @Bean("chunkSampleJob")
-    public Job chunkSampleJob(JobRepository jobRepository, Step chunkSampleStep) {
-        return new JobBuilder("chunkSampleJob", jobRepository)
+    @Bean("chunkJob")
+    public Job chunkJob(JobRepository jobRepository, Step chunkStep) {
+        return new JobBuilder("chunkJob", jobRepository)
                 .listener(commonJobListener)
-                .start(chunkSampleStep)
+                .start(chunkStep)
                 .build();
     }
 
-    @Bean("chunkSampleStep")
-    public Step chunkSampleStep(JobRepository jobRepository, PlatformTransactionManager transactionManager, ChunkItemReader chunkItemReader,
+    @Bean("chunkStep")
+    public Step chunkStep(JobRepository jobRepository, PlatformTransactionManager transactionManager, ChunkItemReader chunkItemReader,
                                 ChunkItemProcessor chunkItemProcessor, ChunkItemWriter chunkItemWriter, CommonStepListener commonStepListener) {
-        return new StepBuilder("chunkSampleStep", jobRepository)
+        return new StepBuilder("chunkStep", jobRepository)
                 .allowStartIfComplete(true)
                 .<User, User>chunk(CHUNK_SIZE, transactionManager)
                 .reader(chunkItemReader)

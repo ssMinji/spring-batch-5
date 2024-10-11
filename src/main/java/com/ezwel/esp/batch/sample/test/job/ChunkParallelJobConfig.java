@@ -33,11 +33,11 @@ public class ChunkParallelJobConfig {
                 .build();
     }
 
-    @Bean("chunkSampleStep")
+    @Bean("chunkParallelStep")
     public Step chunkParallelStep(JobRepository jobRepository, PlatformTransactionManager transactionManager, ChunkParallelItemReader chunkParallelItemReader,
                                   ChunkParallelItemProcessor chunkParallelItemProcessor, ChunkParallelItemWriter chunkParallelItemWriter,
                                   CommonStepListener commonStepListener) {
-        return new StepBuilder("chunkSampleStep", jobRepository)
+        return new StepBuilder("chunkParallelStep", jobRepository)
                 .allowStartIfComplete(true)
                 .<User, User>chunk(CHUNK_SIZE, transactionManager)
                 .reader(chunkParallelItemReader)
@@ -47,13 +47,13 @@ public class ChunkParallelJobConfig {
                 .writer(chunkParallelItemWriter)
                 .listener(new UserItemWriterListener())
                 .listener(commonStepListener)
-                .taskExecutor(taskExecutor())
+                .taskExecutor(threadPoolTaskExecutor())
                 .build();
 
     }
 
     @Bean
-    public TaskExecutor taskExecutor() {
+    public TaskExecutor threadPoolTaskExecutor() {
         ThreadPoolTaskExecutor  taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(4); //동시에 실행할 스레드 수
         taskExecutor.setMaxPoolSize(4); // 최대 스레드 수
