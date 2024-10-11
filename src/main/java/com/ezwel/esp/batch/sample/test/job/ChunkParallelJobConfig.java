@@ -1,6 +1,6 @@
 package com.ezwel.esp.batch.sample.test.job;
 
-import com.ezwel.esp.batch.config.*;
+import com.ezwel.esp.batch.listener.*;
 import com.ezwel.esp.batch.sample.test.chunk.processor.ChunkParallelItemProcessor;
 import com.ezwel.esp.batch.sample.test.chunk.reader.ChunkParallelItemReader;
 import com.ezwel.esp.batch.sample.test.chunk.writer.ChunkParallelItemWriter;
@@ -17,8 +17,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.interceptor.DefaultTransactionAttribute;
 
 @Configuration
 @RequiredArgsConstructor

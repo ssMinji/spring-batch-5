@@ -1,4 +1,4 @@
-package com.ezwel.esp.batch.config;
+package com.ezwel.esp.batch.listener;
 
 import com.ezwel.esp.batch.sample.test.domain.User;
 import org.springframework.batch.core.ItemReadListener;

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @StepScope
-public class ChunkSampleItemProcessor implements ItemProcessor<User, User> {
+public class ChunkItemProcessor implements ItemProcessor<User, User> {
     private final String userName;
 
-    public ChunkSampleItemProcessor(@Value("#{jobParameters['userName']}") String userName) {
+    public ChunkItemProcessor(@Value("#{jobParameters['userName']}") String userName) {
         this.userName = userName;
     }
 

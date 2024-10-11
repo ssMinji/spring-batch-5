@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class SampleTest2Tasklet implements Tasklet {
+public class Tasklet2 implements Tasklet {
     private final UserMapper userMapper;
 
     @Override

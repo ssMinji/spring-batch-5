@@ -10,11 +10,11 @@ import java.util.Map;
 
 @Component
 @StepScope
-public class ChunkSampleItemReader extends MyBatisPagingItemReader<User> {
+public class ChunkItemReader extends MyBatisPagingItemReader<User> {
     // 1회 read 시 가져올 row 개수
     private final int PAGE_SIZE = 1000;
 
-    public ChunkSampleItemReader(SqlSessionFactory sqlSessionFactory, @Value("#{jobParameters['userName']}") String userName) {
+    public ChunkItemReader(SqlSessionFactory sqlSessionFactory, @Value("#{jobParameters['userName']}") String userName) {
         this.setName("SampleItemReader"); // reader명
         this.setSqlSessionFactory(sqlSessionFactory);
         this.setQueryId("com.ezwel.esp.batch.sample.test.mapper.UserMapper.selectUserByUserName");

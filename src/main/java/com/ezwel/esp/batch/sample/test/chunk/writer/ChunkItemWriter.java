@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @StepScope
-public class ChunkSampleItemWriter extends MyBatisBatchItemWriter<User> {
-    public ChunkSampleItemWriter(SqlSessionFactory sqlSessionFactory) {
+public class ChunkItemWriter extends MyBatisBatchItemWriter<User> {
+    public ChunkItemWriter(SqlSessionFactory sqlSessionFactory) {
         this.setSqlSessionFactory(sqlSessionFactory);
         this.setStatementId("com.ezwel.esp.batch.sample.test.mapper.UserMapper.insertUser");
     }
