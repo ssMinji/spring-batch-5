@@ -23,8 +23,6 @@ public class ChunkParallelItemProcessor implements ItemProcessor<User, User> {
     public User process(User item) throws Exception {
         int id = item.getId();
         item.setStatus("F"); // 상태 'F'로 변경
-//        System.out.println("=======================Processor " + item.getId() + "===============================");
-        LocalDate today = LocalDate.now();
         List<UserDetail> userDetail = userDetailMapper.selectUserDetailById(id);
         String activeStatus = "F";
         for (UserDetail userDetailItem : userDetail) {

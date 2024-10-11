@@ -22,7 +22,7 @@ public class ChunkSampleJobConfig {
     private final CommonJobListener commonJobListener;
     private final int CHUNK_SIZE = 1000;
 
-    @Bean
+    @Bean("chunkSampleJob")
     public Job chunkSampleJob(JobRepository jobRepository, Step chunkSampleStep) {
         return new JobBuilder("chunkSampleJob", jobRepository)
                 .listener(commonJobListener)
@@ -30,7 +30,7 @@ public class ChunkSampleJobConfig {
                 .build();
     }
 
-    @Bean
+    @Bean("chunkSampleStep")
     public Step chunkSampleStep(JobRepository jobRepository, PlatformTransactionManager transactionManager, ChunkSampleItemReader chunkSampleItemReader,
                                 ChunkSampleItemProcessor chunkSampleItemProcessor, ChunkSampleItemWriter chunkSampleItemWriter, CommonStepListener commonStepListener) {
         return new StepBuilder("chunkSampleStep", jobRepository)

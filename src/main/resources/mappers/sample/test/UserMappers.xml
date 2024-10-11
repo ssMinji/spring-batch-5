@@ -35,6 +35,7 @@
         SELECT *
         FROM users
         WHERE status = #{status}
+        ORDER BY id
         LIMIT #{_pagesize} OFFSET #{_skiprows}
     </select>
 
