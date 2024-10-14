@@ -13,6 +13,11 @@ java {
 	}
 }
 
+bootJar {
+	archivesBaseName = 'esp_batch'
+	archiveFileName=project.name.replace('_', '-') + ".jar"
+}
+
 repositories {
 	mavenCentral()
 }
